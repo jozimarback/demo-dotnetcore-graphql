@@ -34,5 +34,6 @@ namespace DemoDotNetCoreGraphQL.API.Controllers
 
             return Ok(result);
         }
+
     }
 }
