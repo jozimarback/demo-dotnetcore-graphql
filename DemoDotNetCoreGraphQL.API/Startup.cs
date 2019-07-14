@@ -1,7 +1,9 @@
-﻿using GraphiQl;
+﻿using DemoDotNetCoreGraphQL.Infra;
+using GraphiQl;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,6 +22,7 @@ namespace DemoDotNetCoreGraphQL.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddDbContext<BlogContext>(opcoes => opcoes.UseInMemoryDatabase(databaseName: "Blog"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

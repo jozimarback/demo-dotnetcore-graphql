@@ -4,10 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoDotNetCoreGraphQL.API", "DemoDotNetCoreGraphQL.API\DemoDotNetCoreGraphQL.API.csproj", "{51002360-95E2-4F46-B81C-E7933410E7EF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4A9C800C-18FB-4269-A9E3-4C0FC56A14F4} = {4A9C800C-18FB-4269-A9E3-4C0FC56A14F4}
+		{99B1F6DF-EB4E-43F5-9921-1AEEA4013DEE} = {99B1F6DF-EB4E-43F5-9921-1AEEA4013DEE}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoDotNetCoreGraphQL.Infra", "DemoDotNetCoreGraphQL.Infra\DemoDotNetCoreGraphQL.Infra.csproj", "{4A9C800C-18FB-4269-A9E3-4C0FC56A14F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoDotNetCoreGraphQL.Infra", "DemoDotNetCoreGraphQL.Infra\DemoDotNetCoreGraphQL.Infra.csproj", "{4A9C800C-18FB-4269-A9E3-4C0FC56A14F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoDotNetCoreGraphQL.Aplicacao", "DemoDotNetCoreGraphQL.Aplicacao\DemoDotNetCoreGraphQL.Aplicacao.csproj", "{99B1F6DF-EB4E-43F5-9921-1AEEA4013DEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoDotNetCoreGraphQL.Aplicacao", "DemoDotNetCoreGraphQL.Aplicacao\DemoDotNetCoreGraphQL.Aplicacao.csproj", "{99B1F6DF-EB4E-43F5-9921-1AEEA4013DEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
