@@ -16,7 +16,7 @@ namespace DemoDotNetCoreGraphQL.API.Controllers
 
             var schema = new Schema()
             {
-                //Query = new FluxoClienteLojaQuery()
+                Query = new BlogQuery()
             };
 
             var result = await new DocumentExecuter().ExecuteAsync(_ =>

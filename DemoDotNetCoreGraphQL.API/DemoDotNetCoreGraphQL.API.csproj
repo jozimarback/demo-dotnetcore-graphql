@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Types\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DemoDotNetCoreGraphQL.Infra\DemoDotNetCoreGraphQL.Infra.csproj" />
   </ItemGroup>
 
