@@ -10,7 +10,17 @@ namespace DemoDotNetCoreGraphQL.API
     {
         public BlogQuery()
         {
-
+            Field<ListGraphType<UsuarioType>>("usarios",
+                arguments: new QueryArguments(new List<QueryArgument>
+                {
+                    new QueryArgument<IdGraphType>{Name="id"}
+                }),
+                resolve: contexto =>
+                {
+                    //TODO: usar aplicacao para obter dados
+                    return new List<UsuarioType>();
+                }
+                );
         }
     }
 }

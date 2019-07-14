@@ -12,6 +12,9 @@ namespace DemoDotNetCoreGraphQL.API
         public UsuarioType()
         {
             Field(x => x.Id);
+            Field(x => x.Idade);
+            Field(x => x.Nome);
+            Field(x => x.Posts);
         }
     }
 }
