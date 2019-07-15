@@ -1,24 +1,27 @@
-﻿using GraphQL.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DemoDotNetCoreGraphQL.Infra;
+using GraphQL.Types;
 
 namespace DemoDotNetCoreGraphQL.API
 {
     public class BlogQuery : ObjectGraphType
     {
-        public BlogQuery()
+        public BlogQuery(UsuarioRepositorio repositorio)
         {
             Field<ListGraphType<UsuarioType>>("usarios",
-                arguments: new QueryArguments(new List<QueryArgument>
+                arguments: new QueryArguments(new QueryArgument[]
                 {
-                    new QueryArgument<IdGraphType>{Name="id"}
+                    new QueryArgument<IdGraphType>{Name="id"},
+                    new QueryArgument<StringGraphType>{Name="nome"}
                 }),
                 resolve: contexto =>
                 {
+                    var filtro = new UsuarioFiltro()
+                    {
+                        Id = contexto.GetArgument<int>("id"),
+                        Nome = contexto.GetArgument<string>("nome"),
+                    };
                     //TODO: usar aplicacao para obter dados
-                    return new List<UsuarioType>();
+                    return repositorio.ObterUsuarios(filtro);
                 }
                 );
         }

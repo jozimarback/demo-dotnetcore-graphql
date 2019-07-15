@@ -1,9 +1,5 @@
 ﻿using DemoDotNetCoreGraphQL.Infra;
 using GraphQL.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DemoDotNetCoreGraphQL.API
 {
@@ -11,7 +7,7 @@ namespace DemoDotNetCoreGraphQL.API
     {
         public UsuarioType()
         {
-            Field(x => x.Id);
+            Field(x => x.Id).Description("Id usuário");
             Field(x => x.Idade);
             Field(x => x.Nome);
             Field(x => x.Posts);

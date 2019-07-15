@@ -22,6 +22,9 @@ namespace DemoDotNetCoreGraphQL.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddTransient<UsuarioRepositorio, UsuarioRepositorio>();
+
             services.AddDbContext<BlogContext>(opcoes => opcoes.UseInMemoryDatabase(databaseName: "Blog"));
         }
 
