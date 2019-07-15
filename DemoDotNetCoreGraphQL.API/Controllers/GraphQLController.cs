@@ -1,6 +1,4 @@
-﻿using DemoDotNetCoreGraphQL.Infra;
-using GraphQL;
-using GraphQL.Types;
+﻿using GraphQL;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -10,21 +8,18 @@ namespace DemoDotNetCoreGraphQL.API.Controllers
     [ApiController]
     public class GraphQLController : ControllerBase
     {
-        private readonly UsuarioRepositorio _repositorio;
+        private readonly BlogSchema _schema;
 
-        public GraphQLController(UsuarioRepositorio repositorio)
+        public GraphQLController(BlogSchema schema)
         {
-            _repositorio = repositorio;
+            _schema = schema;
         }
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]GraphQLQuery query)
         {
             var inputs = query.Variables.ToInputs();
 
-            var schema = new Schema()
-            {
-                Query = new BlogQuery(_repositorio)
-            };
+            var schema = _schema;
 
             var result = await new DocumentExecuter().ExecuteAsync(_ =>
             {

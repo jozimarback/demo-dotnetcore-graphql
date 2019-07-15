@@ -3,11 +3,11 @@ using GraphQL.Types;
 
 namespace DemoDotNetCoreGraphQL.API
 {
-    public class BlogQuery : ObjectGraphType
+    public class BlogQuery : ObjectGraphType<object>
     {
         public BlogQuery(UsuarioRepositorio repositorio)
         {
-            Field<ListGraphType<UsuarioType>>("usarios",
+            Field<ListGraphType<UsuarioType>>("usuario",
                 arguments: new QueryArguments(new QueryArgument[]
                 {
                     new QueryArgument<IdGraphType>{Name="id"},
@@ -23,6 +23,7 @@ namespace DemoDotNetCoreGraphQL.API
                     //TODO: usar aplicacao para obter dados
                     return repositorio.ObterUsuarios(filtro);
                 }
+                
                 );
         }
     }

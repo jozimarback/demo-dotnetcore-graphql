@@ -1,5 +1,6 @@
 ﻿using DemoDotNetCoreGraphQL.Infra;
 using GraphiQl;
+using GraphQL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -22,8 +23,12 @@ namespace DemoDotNetCoreGraphQL.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
+            services.AddSingleton<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddTransient<UsuarioRepositorio, UsuarioRepositorio>();
+            services.AddSingleton<BlogSchema>();
+            services.AddSingleton<BlogQuery>();
+            services.AddSingleton<UsuarioType>();
+            
 
             services.AddDbContext<BlogContext>(opcoes => opcoes.UseInMemoryDatabase(databaseName: "Blog"));
         }
