@@ -25,10 +25,10 @@ namespace DemoDotNetCoreGraphQL.API
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSingleton<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddTransient<UsuarioRepositorio, UsuarioRepositorio>();
-            services.AddSingleton<BlogSchema>();
-            services.AddSingleton<BlogQuery>();
-            services.AddSingleton<UsuarioType>();
-            
+            services.AddScoped<BlogSchema>();
+            services.AddTransient<BlogQuery>();
+            services.AddTransient<UsuarioType>();
+
 
             services.AddDbContext<BlogContext>(opcoes => opcoes.UseInMemoryDatabase(databaseName: "Blog"));
         }
@@ -40,6 +40,7 @@ namespace DemoDotNetCoreGraphQL.API
             {
                 app.UseDeveloperExceptionPage();
             }
+            
             app.UseGraphiQl();
             app.UseMvc();
         }

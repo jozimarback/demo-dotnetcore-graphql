@@ -10,5 +10,7 @@ namespace DemoDotNetCoreGraphQL.Infra
         public string Email { get; set; }
         public int Idade { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
+        public DateTime DataCriacao { get; set; }
+        public DateTime? DataAlteracao { get; set; }
     }
 }
