@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using System;
 
 namespace DemoDotNetCoreGraphQL.API
@@ -29,12 +30,18 @@ namespace DemoDotNetCoreGraphQL.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc((setup) => { setup.EnableEndpointRouting = false; }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.
+
+                AddMvc(option => option.EnableEndpointRouting = false)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddSingleton<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddTransient<UsuarioRepositorio, UsuarioRepositorio>();
             services.AddScoped<BlogSchema>();
             services.AddScoped<BlogQuery>();
+            services.AddScoped<BlogMutation>();
             services.AddScoped<UsuarioType>();
+            services.AddScoped<UsuarioInputType>();
             services.AddDbContext<BlogContext>(opcoes => opcoes.UseInMemoryDatabase(databaseName: "Blog"));
 
         }
@@ -49,6 +56,7 @@ namespace DemoDotNetCoreGraphQL.API
 
             app.UseGraphiQl();
             app.UseMvc();
+
         }
     }
 }

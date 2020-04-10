@@ -10,7 +10,8 @@ namespace DemoDotNetCoreGraphQL.API
         : base(serviceProvider)
         {
             Query = serviceProvider.GetRequiredService<BlogQuery>();
-            
+            Mutation = serviceProvider.GetRequiredService<BlogMutation>();
+
         }
     }
 }
