@@ -29,7 +29,7 @@ namespace DemoDotNetCoreGraphQL.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc((setup) => { setup.EnableEndpointRouting = false; }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddSingleton<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddTransient<UsuarioRepositorio, UsuarioRepositorio>();
             services.AddScoped<BlogSchema>();
