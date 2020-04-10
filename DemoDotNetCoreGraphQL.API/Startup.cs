@@ -35,7 +35,7 @@ namespace DemoDotNetCoreGraphQL.API
             services.AddScoped<BlogSchema>();
             services.AddScoped<BlogQuery>();
             services.AddScoped<UsuarioType>();
-            services.AddDbContext<BlogContext>(opcoes => opcoes.UseInMemoryDatabase(databaseName: "Blog"));         
+            services.AddDbContext<BlogContext>(opcoes => opcoes.UseInMemoryDatabase(databaseName: "Blog"));
 
         }
 
@@ -46,7 +46,7 @@ namespace DemoDotNetCoreGraphQL.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseGraphiQl();
             app.UseMvc();
         }

@@ -10,7 +10,7 @@ namespace DemoDotNetCoreGraphQL.API
         : base(serviceProvider)
         {
             Query = serviceProvider.GetRequiredService<BlogQuery>();
-
+            
         }
     }
 }

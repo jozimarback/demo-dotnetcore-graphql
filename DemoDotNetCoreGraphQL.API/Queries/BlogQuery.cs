@@ -20,7 +20,6 @@ namespace DemoDotNetCoreGraphQL.API
                         Id = contexto.GetArgument<int>("id"),
                         Nome = contexto.GetArgument<string>("nome"),
                     };
-                    //TODO: usar aplicacao para obter dados
                     return repositorio.ObterUsuarios(filtro);
                 }
                 
