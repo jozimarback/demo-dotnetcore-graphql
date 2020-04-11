@@ -27,5 +27,27 @@ namespace DemoDotNetCoreGraphQL.Infra
             _context.Add(usuario);
             return usuario;
         }
+
+        public Usuario Alterar(Usuario dbUsuario, Usuario usuario)
+        {
+
+            dbUsuario.Nome = usuario.Nome;
+            dbUsuario.Idade = usuario.Idade;
+
+            _context.SaveChanges();
+
+            return dbUsuario;
+        }
+
+        public Usuario ObterUsuarioPorId(int id)
+        {
+            return _context.Usuarios.FirstOrDefault(f => f.Id == id);
+        }
+
+        public void Remover(Usuario usuario)
+        {
+            _context.Remove(usuario);
+            _context.SaveChanges();
+        }
     }
 }
