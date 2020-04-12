@@ -25,6 +25,7 @@ namespace DemoDotNetCoreGraphQL.Infra
         public Usuario Adicionar(Usuario usuario)
         {
             _context.Add(usuario);
+            _context.SaveChanges();
             return usuario;
         }
 

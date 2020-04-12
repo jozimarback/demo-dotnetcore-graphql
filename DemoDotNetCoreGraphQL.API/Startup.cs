@@ -31,7 +31,6 @@ namespace DemoDotNetCoreGraphQL.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.
-
                 AddMvc(option => option.EnableEndpointRouting = false)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
